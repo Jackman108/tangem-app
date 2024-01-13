@@ -4,19 +4,20 @@ import styles from './BlackFridayBanner.module.css';
 import DismissButton from '../UI/DismissButton/DismissButton';
 import ShopNowButton from '../UI/ShopNowButton/ShopNowButton';
 import { Router } from 'next/router';
-import BlackFridayBannerContent from '../BlackFridayBannerContent/BlackFridayBannerContent';
 import ImageBanner from '../ImageBanner/ImageBanner';
 
 type BlackFridayBannerProps = {
     bannerKey: string;
     onDismiss: () => void;
     isSecondBanner?: boolean;
+    shopNowButtonText?: string;
 };
 
 const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
     bannerKey,
     onDismiss,
-    isSecondBanner
+    isSecondBanner,
+    shopNowButtonText = "Shop now",
 }) => {
     const [isVisible, setIsVisible] = useState(true);
     const bannerRef = useRef<HTMLDivElement | null>(null);
@@ -43,7 +44,7 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
                 const isBannerVisible = bannerRect.bottom > 0 && bannerRect.top < window.innerHeight;
 
                 if (!isBannerVisible) {
-                    setIsVisible(false);
+                    setIsVisible(true);
                     onDismiss();
                 }
             }
@@ -59,14 +60,31 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
             ref={bannerRef}
             className={`${styles.banner} ${bannerClassName}`}
         >
+            {isSecondBanner && (
+                <>
+                    <DismissButton onClick={handleDismiss} />
+                </>
+            )}
             <div className={styles.lightingEffect} />
             <div className={styles.additionalEffect} />
-            <ImageBanner />
-            <BlackFridayBannerContent />
-            <div className={styles.buttons}>
-                <ShopNowButton onClick={handleShopNow} />
-                <DismissButton onClick={handleDismiss} />
+            <div className={styles.ImageBanner}>
+                <ImageBanner />
             </div>
+
+            <div className={styles.content}>
+                <p className={styles.title}><strong>Black Friday</strong><span className={styles.titleDate}>, 24-27 Nov</span></p>
+                <p className={styles.discount}><strong>10%OFF</strong></p>
+                <p className={styles.useCode}>Use code <strong className={styles.code}>10FRIDAY</strong> at checkout</p>
+            </div>
+            <div className={styles.wrapperShopNowButton}>
+                <ShopNowButton onClick={handleShopNow} buttonText={shopNowButtonText} />
+            </div>
+            {!isSecondBanner && (
+                <>
+                    <DismissButton onClick={handleDismiss} />
+                </>
+            )}
+
         </div>
     ) : null;
 };

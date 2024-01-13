@@ -15,6 +15,7 @@ const Home: React.FC = () => {
             <BlackFridayBanner
                 bannerKey="banner1"
                 onDismiss={handleDismissFirstBanner}
+                shopNowButtonText="Shop now"
             />
 
             {showSecondBanner &&
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
                     bannerKey="banner2"
                     onDismiss={() => setShowSecondBanner(false)}
                     isSecondBanner
+                    shopNowButtonText="Shop now through Monday"
                 />}
         </main>
     );

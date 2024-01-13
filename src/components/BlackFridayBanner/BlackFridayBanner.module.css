@@ -1,4 +1,4 @@
-.banner {
+.firstBanner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,20 +7,29 @@
     width: 100%;
     height: 54px;
     background: linear-gradient(180deg, #101010 0%, var(--black) 100%);
-}
-
-.firstBanner {
     margin-top: 54px;
 }
 
 .secondBanner {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    top: 35%;
+    right: 0;
+    width: 600px;
+    height: 349px;
+    flex-shrink: 0;
     opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards; 
-    transform: translateY(100%); 
+    animation: fadeIn 1s ease-in-out forwards;
+    transform: translateY(100%);
+    background: url(../../../public/cardImage.png);
+    background-size: cover;
+    color: #fff;
+    border-radius: 16px;
+    padding: 15px;
+    margin-right: 34px;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    justify-items: flex-end;
+    align-items: center;
 }
 
 @keyframes fadeIn {
@@ -28,6 +37,7 @@
         opacity: 0;
         transform: translateY(100%);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -35,8 +45,7 @@
 }
 
 .firstBanner .lightingEffect,
-.firstBanner .additionalEffect,
-.secondBanner .lightingEffect {
+.firstBanner .additionalEffect {
     position: absolute;
     width: 1408px;
     height: 1408px;
@@ -57,17 +66,172 @@
     transform: translate(-60%, -120%);
 }
 
-.secondBanner .lightingEffect {
-    background: radial-gradient(50% 50% at 50% 50%, #FAE571 0%, rgba(11, 14, 23, 0.00) 100%);
-    transform: translate(20%);
+.firstBanner .ImageBanner {
+    height: 54px;
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
+.secondBanner .ImageBanner {
+    display: none;
 }
 
-.buttons {
+.content {
+    display: flex;
+}
+
+.firstBanner .content {
+    justify-content: space-between;
+}
+
+.firstBanner .content p {
+    margin-right: 1rem;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.048px;
+}
+
+.firstBanner .discount {
+    color: var(--orange);
+    font-weight: 600;
+    letter-spacing: -0.64px;
+
+}
+
+.firstBanner .code {
+    font-weight: 600;
+    color: var(--orange);
+}
+
+
+.secondBanner .content {
+    flex-direction: column;
+    text-align: center;
+    width: 55%;
+    justify-items: flex-end;
+    white-space: nowrap;
+}
+
+.secondBanner .content p {
+    font-style: normal;
+    font-weight: 500;
+}
+
+.secondBanner .title {
+    font-size: 46px;
+    padding: 0 20px;
+    letter-spacing: -1.84px;
+    line-height: 110%;
+}
+
+.secondBanner .discount {
+    color: var(--orange);
+    font-size: 40px;
+    font-style: normal;
+    line-height: 110%;
+    letter-spacing: -1.6px;
+    background: linear-gradient(90deg, #7D5317, #EDDF95);
+    -webkit-background-clip: text;
+    color: transparent;
+    padding: 25px 0 14px 0;
+}
+
+.secondBanner .useCode {
+    color: #6C6C70;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 130%;
+    letter-spacing: 0.08px;
+    padding-bottom: 40px;
+}
+
+.secondBanner .code {
+    color: var(--orange);
+}
+
+.secondBanner .titleDate {
+    display: none;
+}
+
+.wrapperShopNowButton {
+    background-color: var(--white);
+    width: 115px;
+    height: 38px;
+    margin-right: 14px;
+    z-index: 1;
+    border-radius: 100px;
+    backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    line-height: 110%;
+    color: #0B0B0B;
+    text-shadow: 0px 0px 30px rgba(102, 204, 255, 0.20);
+    position: relative;
+}
+
+.wrapperShopNowButton:hover {
+    cursor: pointer;
+    background-color: rgb(226, 225, 225);
+}
+
+.shopNowButton {
+    padding: 10px 14px;
+    border: none;
+    outline: none;
+    background: linear-gradient(to right, gray 20%, black 45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 110%;
+    cursor: pointer;
+}
+
+.secondBanner .wrapperShopNowButton {
+    width: 50%;
+    border-radius: 14px;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.10);
+    text-decoration: none;
+    color: var(--white);
+}
+
+.secondBanner .wrapperShopNowButton:hover {
+    background: rgba(255, 255, 255, 0.259);
+}
+
+.secondBanner .shopNowButton {
+    padding: 10px 14px;
+    border: none;
+    outline: none;
+    background: var(--white);
+    -webkit-background-clip: text;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 110%;
+    cursor: pointer;
+}
+
+.dismissButton {
+    width: 24px;
+    height: 24px;
+    margin-right: 22px;
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.dismissButton:hover {
+    cursor: pointer;
+}
+
+.secondBanner .dismissButton {   
+    margin-right: 0;   
 }
