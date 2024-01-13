@@ -1,0 +1,41 @@
+
+.wrapperShopNowButton {
+    background-color: var(--white);
+    width: 115px;
+    height: 38px;
+    margin-right: 14px;
+    z-index: 1;
+    border-radius: 100px;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    line-height: 110%;
+    color: #0B0B0B;
+    text-shadow: 0px 0px 30px rgba(102, 204, 255, 0.20);
+    position: relative;
+}
+
+.shopNowButton {
+    padding: 10px 14px;
+    border: none;
+    outline: none;
+    background: linear-gradient(to right, gray 20%, black 45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 110%;
+    cursor: pointer;
+}
+
+
+.wrapperShopNowButton:hover {
+    cursor: pointer;
+    background-color: rgb(226, 225, 225);
+}
+

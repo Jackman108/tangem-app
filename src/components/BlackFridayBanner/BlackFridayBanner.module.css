@@ -7,6 +7,17 @@
     width: 100%;
     height: 54px;
     background: linear-gradient(180deg, #101010 0%, var(--black) 100%);
+    margin-top: 54px;
+}
+.firstBanner {
+    margin-top: 54px;
+}
+
+.secondBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .content {
@@ -34,7 +45,7 @@
     color: var(--orange);
 }
 
-.lightingEffect {
+.firstBanner .lightingEffect {
     position: absolute;
     width: 1408px;
     height: 1408px;
@@ -47,7 +58,7 @@
     transform: translate(20%, -125%);
 }
 
-.additionalEffect {
+.firstBanner .additionalEffect {
     width: 1397px;
     height: 1399px;
     flex-shrink: 0;
@@ -60,61 +71,20 @@
     transform: translate(-60%, -120%);
 }
 
+
+.secondBanner .lightingEffect {
+    position: absolute;
+    width: 1408px;
+    height: 1408px;
+    flex-shrink: 0;
+    border-radius: 1408px;
+    background: radial-gradient(50% 50% at 50% 50%, #FAE571 0%, rgba(11, 14, 23, 0.00) 100%);
+    filter: blur(92px);
+    top: 50%;
+    right: 0;
+    transform: translate(20%);
+}
 .buttons {
     display: flex;
     align-items: center;
-}
-
-
-.wrapperShopNowButton {
-    background-color: var(--white);
-    width: 115px;
-    height: 38px;
-    margin-right: 14px;
-    z-index: 1;
-    border-radius: 100px;
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    line-height: 110%;
-    color: #0B0B0B;
-    text-shadow: 0px 0px 30px rgba(102, 204, 255, 0.20);
-    position: relative;
-}
-
-.shopNowButton {
-    padding: 10px 14px;
-    border: none;
-    outline: none;
-    background: linear-gradient(to right, gray 20%, black 45%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 110%;
-    cursor: pointer;
-}
-
-
-.wrapperShopNowButton:hover {
-    cursor: pointer;
-    background-color: rgb(226, 225, 225);
-}
-
-.dismissButton {
-    width: 24px;
-    height: 24px;
-    margin-right: 22px;
-    color: var(--white);
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-.dismissButton:hover {
-    cursor: pointer;
 }

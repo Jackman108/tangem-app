@@ -1,21 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import styles from './BlackFridayBanner.module.css'; // Assume you have CSS module for styling
+'use client'
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './BlackFridayBanner.module.css';
 import Image from 'next/image';
 import bannerImage from '../../../public/bannerImage.webp';
-import cross from '../../../public/Close.svg';
+import DismissButton from '../UI/DismissButton/DismissButton';
+import ShopNowButton from '../UI/shopNowButton/shopNowButton';
+import { Router } from 'next/router';
 
 type BlackFridayBannerProps = {
+    bannerKey: string;
     onDismiss: () => void;
+    isSecondBanner?: boolean;
 };
 
-const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({ onDismiss }) => {
+const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
+    bannerKey,
+    onDismiss,
+    isSecondBanner
+}) => {
+    const [isVisible, setIsVisible] = useState(true);
+    const bannerRef = useRef<HTMLDivElement | null>(null);
 
     const handleShopNow = () => {
+        const url = '/path/to/url';
+        Router.events.emit("routeChangeStart", url);
         window.location.href = 'https://www.mediamarkt.nl/nl/campaign/blackfriday';
     };
 
-    return (
-        <div className={styles.banner}>
+    const handleDismiss = () => {
+        setIsVisible(false);
+        onDismiss();
+    };
+    const bannerClassName = isSecondBanner ? styles.secondBanner : styles.firstBanner;
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentBanner = bannerRef.current;
+
+            if (currentBanner) {
+                const bannerRect = currentBanner.getBoundingClientRect();
+                const isBannerVisible = bannerRect.bottom > 0 && bannerRect.top < window.innerHeight;
+
+                if (!isBannerVisible) {
+                    setIsVisible(false);
+                    onDismiss();
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [onDismiss]);
+
+    return isVisible ? (
+        <div
+            key={bannerKey}
+            ref={bannerRef}
+            className={`${styles.banner} ${bannerClassName}`}
+        >
             <div className={styles.lightingEffect} />
             <div className={styles.additionalEffect} />
             <Image
@@ -34,29 +77,13 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({ onDismiss }) => {
                 <p className={styles.useCode}>Use code <strong className={styles.code}>10FRIDAY</strong> at checkout</p>
             </div>
             <div className={styles.buttons}>
-                <div className={styles.wrapperShopNowButton} >
-                    <button className={styles.shopNowButton} onClick={handleShopNow}>
-                        Shop now
-                    </button>
-                </div>
-
-                <button className={styles.dismissButton} onClick={onDismiss}>
-                <Image
-                priority
-                src={cross}
-                alt={'cross Image'}
-                quality={100}
-                width={24}
-                height={24}
-                placeholder='empty'
-                className={styles.dismissImage}
-            />                  
-                </button>
+                <ShopNowButton onClick={handleShopNow} />
+                <DismissButton onClick={handleDismiss} />
             </div>
 
 
         </div>
-    );
+    ) : null;
 };
 
 export default BlackFridayBanner;
