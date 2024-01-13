@@ -1,11 +1,11 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './BlackFridayBanner.module.css';
-import Image from 'next/image';
-import bannerImage from '../../../public/bannerImage.webp';
 import DismissButton from '../UI/DismissButton/DismissButton';
-import ShopNowButton from '../UI/shopNowButton/shopNowButton';
+import ShopNowButton from '../UI/ShopNowButton/ShopNowButton';
 import { Router } from 'next/router';
+import BlackFridayBannerContent from '../BlackFridayBannerContent/BlackFridayBannerContent';
+import ImageBanner from '../ImageBanner/ImageBanner';
 
 type BlackFridayBannerProps = {
     bannerKey: string;
@@ -61,27 +61,12 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
         >
             <div className={styles.lightingEffect} />
             <div className={styles.additionalEffect} />
-            <Image
-                priority
-                src={bannerImage}
-                alt={'banner Image'}
-                quality={100}
-                width={212}
-                height={54}
-                placeholder='empty'
-                className={styles.banner__image}
-            />
-            <div className={styles.content}>
-                <p className={styles.title}><strong>Black Friday</strong>, 24-27 Nov</p>
-                <p className={styles.discount}><strong>10%OFF</strong></p>
-                <p className={styles.useCode}>Use code <strong className={styles.code}>10FRIDAY</strong> at checkout</p>
-            </div>
+            <ImageBanner />
+            <BlackFridayBannerContent />
             <div className={styles.buttons}>
                 <ShopNowButton onClick={handleShopNow} />
                 <DismissButton onClick={handleDismiss} />
             </div>
-
-
         </div>
     ) : null;
 };
