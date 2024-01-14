@@ -25,6 +25,13 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: var(--font-mono), sans-serif;
+  overflow-x: hidden;
+}
+
+@media (max-width: 393px) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 ul[class],

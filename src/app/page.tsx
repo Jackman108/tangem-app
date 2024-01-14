@@ -10,6 +10,10 @@ const Home: React.FC = () => {
         setShowSecondBanner(true);
     };
 
+    const handleDismissSecondBanner = () => {
+        setShowSecondBanner(false);
+    };
+
     return (
         <main className={styles.main}>
             <BlackFridayBanner
@@ -21,7 +25,7 @@ const Home: React.FC = () => {
             {showSecondBanner &&
                 <BlackFridayBanner
                     bannerKey="banner2"
-                    onDismiss={() => setShowSecondBanner(false)}
+                    onDismiss={handleDismissSecondBanner}
                     isSecondBanner
                     shopNowButtonText="Shop now through Monday"
                 />}

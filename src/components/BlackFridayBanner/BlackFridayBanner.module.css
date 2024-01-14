@@ -20,7 +20,7 @@
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
     transform: translateY(100%);
-    background: url(../../../public/cardImage.png);
+    background: url('/cardImage.png');
     background-size: cover;
     color: #fff;
     border-radius: 16px;
@@ -76,14 +76,16 @@
 
 .content {
     display: flex;
+    white-space: nowrap;
 }
 
 .firstBanner .content {
     justify-content: space-between;
+    align-items: center;
 }
 
 .firstBanner .content p {
-    margin-right: 1rem;
+    margin-right: 24px;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -153,6 +155,13 @@
     display: none;
 }
 
+.wrapperButtons {
+    display: flex;
+    white-space: nowrap;
+    justify-items: center;
+    align-items: center;
+}
+
 .wrapperShopNowButton {
     background-color: var(--white);
     width: 115px;
@@ -193,12 +202,13 @@
 }
 
 .secondBanner .wrapperShopNowButton {
-    width: 50%;
+    width: 100%;
     border-radius: 14px;
     opacity: 0.9;
     background: rgba(255, 255, 255, 0.10);
     text-decoration: none;
     color: var(--white);
+    margin: auto 35px;
 }
 
 .secondBanner .wrapperShopNowButton:hover {
@@ -228,10 +238,113 @@
     border: none;
     outline: none;
 }
+
 .dismissButton:hover {
     cursor: pointer;
 }
 
-.secondBanner .dismissButton {   
-    margin-right: 0;   
+.secondBanner .dismissButton {
+    margin-right: 0;
+}
+
+.firstBanner .discount::before,
+.firstBanner .useCode::before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 3px;
+    height: 4px;
+    top: 12px;
+    right: 12px;
+    color: var(--white);
+    z-index: 1;
+    background: url('/vector.svg') center/cover no-repeat;
+}
+
+
+@media (max-width: 834px) {
+
+    .firstBanner .lightingEffect,
+    .firstBanner .additionalEffect {
+        display: none;
+    }
+
+    .firstBanner .ImageBanner img {
+        width: 184px;
+    }
+
+    .firstBanner .titleDate {
+        display: none;
+    }
+
+    .firstBanner .codeCheckout {
+        display: none;
+    }
+
+    .firstBanner .dismissButton {
+        display: none;
+    }
+}
+
+@media (max-width: 393px) {
+
+    .firstBanner .discount::before,
+    .firstBanner .useCode::before {
+        display: none;
+    }
+
+    .firstBanner .ImageBanner img {
+        width: 159px;
+        margin-left: -31px;
+    }
+
+    .firstBanner {
+        justify-content: start;
+    }
+
+    .firstBanner .content p {
+        margin-right: 4px;
+    }
+
+
+    .firstBanner .useCode {
+        display: none;
+    }
+
+    .firstBanner .wrapperShopNowButton {
+        display: none;
+    }
+
+    .secondBanner {
+        right: -12%;
+        border-radius: 0;
+        margin-right: 0px;
+        overflow-x: hidden;
+    }
+
+    .secondBanner .content {
+        transform: translateX(-22%);
+    }
+
+    .secondBanner .wrapperShopNowButton {
+        transform: translateX(-30%);
+    }
+
+    .secondBanner .dismissButton {
+        margin-right: 42px;
+    }
+
+    .firstBanner .discount::after {
+        content: "";
+        display: flex;
+        position: absolute;
+        width: 30px;
+        height: 28px;
+        top: 68px;
+        right: 36px;
+        color: var(--white);
+        white-space: nowrap;
+        z-index: 1;
+        background: url('/menu-icon.svg') center/cover no-repeat;
+    }
 }
