@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import BlackFridayBanner from '@/components/BlackFridayBanner/BlackFridayBanner'
-import styles from './page.module.css'
+import styles from '@/app/page.module.css'
 
 const Home: React.FC = () => {
     const [showSecondBanner, setShowSecondBanner] = useState(false);

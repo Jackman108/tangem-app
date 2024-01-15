@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import cross from '../../../../public/Close.svg';
-import styles from '../../BlackFridayBanner/BlackFridayBanner.module.css'; 
+import styles from '@/components/BlackFridayBanner/BlackFridayBanner.module.css'; 
 
 
 type DismissButtonProps = {

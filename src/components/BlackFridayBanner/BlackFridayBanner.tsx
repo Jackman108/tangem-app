@@ -1,11 +1,11 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './BlackFridayBanner.module.css';
-import DismissButton from '../UI/DismissButton/DismissButton';
-import ShopNowButton from '../UI/ShopNowButton/ShopNowButton';
-import ImageBanner from '../ImageBanner/ImageBanner';
-import { getShopNowButtonText, utilsIsMobile } from '../helpers/utilsIsMobile';
-import { useScrollAndResize } from '../helpers/eventHandlers';
+import styles from '@/components/BlackFridayBanner/BlackFridayBanner.module.css';
+import DismissButton from '@/components/UI/DismissButton/DismissButton';
+import ShopNowButton from '@/components/UI/ShopNowButton/ShopNowButton';
+import ImageBanner from '@/components/ImageBanner/ImageBanner';
+import { getShopNowButtonText, utilsIsMobile } from '@/components/helpers/utilsIsMobile';
+import { useScrollAndResize } from '@/components/helpers/eventHandlers';
 
 type BlackFridayBannerProps = {
     bannerKey: string;
@@ -24,7 +24,7 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
     const bannerRef = useRef<HTMLDivElement | null>(null);
 
     const handleShopNow = () => {
-       console.log('Shop Now');
+        console.log('Shop Now');
     };
 
     const handleDismiss = () => {
@@ -58,8 +58,8 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
         }
     };
     useEffect(() => {
-        handleResize(); // Initial state on mount
-    }, []); 
+        handleResize(); 
+    }, []);
 
     useScrollAndResize(handleScroll, handleResize);
 
