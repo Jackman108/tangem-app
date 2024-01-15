@@ -1,9 +1,8 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './BlackFridayBanner.module.css';
 import DismissButton from '../UI/DismissButton/DismissButton';
 import ShopNowButton from '../UI/ShopNowButton/ShopNowButton';
-import { Router } from 'next/router';
 import ImageBanner from '../ImageBanner/ImageBanner';
 import { getShopNowButtonText, utilsIsMobile } from '../helpers/utilsIsMobile';
 import { useScrollAndResize } from '../helpers/eventHandlers';
@@ -25,9 +24,7 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
     const bannerRef = useRef<HTMLDivElement | null>(null);
 
     const handleShopNow = () => {
-        const url = '/path/to/url';
-        Router.events.emit("routeChangeStart", url);
-        window.location.href = 'https://www.mediamarkt.nl/nl/campaign/blackfriday';
+       console.log('Shop Now');
     };
 
     const handleDismiss = () => {
@@ -52,8 +49,17 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
     };
 
     const handleResize = () => {
-        document.body.classList.toggle('disable-scroll', utilsIsMobile());
+        const isMobile = utilsIsMobile();
+        document.body.classList.toggle('disable-scroll', isMobile);
+        if (isMobile) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     };
+    useEffect(() => {
+        handleResize(); // Initial state on mount
+    }, []); 
 
     useScrollAndResize(handleScroll, handleResize);
 
@@ -81,7 +87,7 @@ const BlackFridayBanner: React.FC<BlackFridayBannerProps> = ({
                 </p>
                 <p className={styles.useCode}>
                     Use code
-                    <strong className={styles.code}>10FRIDAY</strong>
+                    <strong className={styles.code}> 10FRIDAY</strong>
                     <span className={styles.codeCheckout}> at checkout</span>
                 </p>
             </div>
